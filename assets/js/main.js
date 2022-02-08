@@ -1,144 +1,260 @@
-
+console.log("Sample JavaScript #2 HW #16");
 
 /*
  * #1
  *
- * Создайте переменные со значениями
+ * Создайте объект userObj, описывающий человека.
+ *
+ * Следующие поля обязательны:
+ * firstName – любое имя, строка
+ * lastName – любая фамилия, строка
+ * age – любой возраст, число
  */
-
-// имя переменной: myNum, значение: 10
-var myNum= 10
-console.log('myNum: ', myNum);
-// имя переменной: myStr, значение: 'строка'
-var myStr= 'строка';
-console.log('myStr:', myStr);
-
-// имя переменной: myBool, значение: true
-var myBool= true;
-console.log('myBool:', myBool);
-// имя переменной: myArr, значения: 1, 2, 3, 4, 5
-var myArr= [1,2,3,4,5];
-console.log('myArr:', myArr);
-// имя переменной myObj, значения: first: 'First Name', last: 'Last Name'
-var myObj= {first:'First Name', last: 'Last Name'}
-console.log('myObj:', myObj);
+var userObj = {
+  firstName: "Yulia",
+  lastName: "Kocuba",
+  age: 22,
+};
+console.log(userObj);
 /*
  * #2
  *
- * Отформатируйте целое число, которое хранится в переменной myNum,
- * чтобы получить результат с 2 знаками после запятой.
- * Результат сохраните в переменную decimal2.
+ * Для объекта из п.1 создайте метод fullName, который будет возвращать полное имя,
+ * состоящее из firstName и lastName, склеенных в строку через пробел.
+ *
+ * Например:
+ * userObj.firstName ← 'Имя
+ * userObj.lastName ← Фамилия'
+ * userObj.fullName() → 'Имя Фамилия'.
  */
+var userObj = {
+  firstName: "Yulia",
+  lastName: "Kocuba",
+  age: 22,
+  fullName: function () {
+    return userObj.firstName + " " + userObj.lastName;
+  },
+};
 
-// decimal2
-var decimal2 = myNum.toFixed(2)
-console.log('decimal2:', decimal2 );
+console.log(userObj.fullName());
 /*
  * #3
  *
- * Создайте переменную i для которой выполните префиксный
- * и постфиксный инкремент и декремент.
- * Поэкспериментируйте с результатами, выводя их в консоль.
+ * Дана функция defUpperStr('My text'), которая возвращает текст, преобразованный в верхний регистр, т.е:
+ * defUpperStr('My text') → 'MY TEXT'.
+ *
+ * Если функция вызывается без параметра defUpperStr(), она не должна возвращать undefined,
+ * в этом случае требуется вернуть строку текста по умолчанию в верхнем регистре, т.е:
+ * defUpperStr() → 'DEFAULT TEXT'.
+ *
+ * При выполнении задачи не используйте оператор if, требуется решение с логическим оператором ||.
  */
 
-// i
-var i= 10;
-console.log('i:', --i );
-console.log('i:', i++ );
-console.log('i:', ++i );
-console.log('i:', i-- );
+/* eslint-disable capitalized-comments */
+// MY TEXT
+function defUpperStr(str) {
+  return (str || "Default text").toUpperCase();
+}
+console.log(defUpperStr("My text"));
+console.log(defUpperStr());
 
 /*
  * #4
  *
- * Создайте новую переменную myTest и присвойте ей значение 20.
- * Выполните присваивание с операцией, используя операторы: +=, –=, *=, /=, %=.
- * Результаты присваиваются в myTest, затем выводятся в консоль.
- * В вычислениях можно использовать объявленную ранее переменную myNum и/или числа.
+ * Создайте функцию evenFn(n), которая принимает параметром число – количество итераций цикла,
+ * т.е. for 0..n. Функция должна вернуть массив, состоящий только из четных значений, генерируемых в цикле.
+ *
+ * Причем:
+ * 0 не должен попадать в результирующий массив
+ * цикл должен работать до n включительно
+ * разрешен только оператор for
+ *
+ * Например:
+ * evenFn(10) → [2, 4, 6, 8, 10]
+ * evenFn(15) → [2, 4, 6, 8, 10, 12, 14]
+ * evenFn(20) → [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
  */
 
-// myTest
-var myTest= 20;
+function evenFn(n) {
+  var arr = [];
+  for (let i = 1; i <= n; i++) if (i % 2 === 0) arr.push(i);
+  return arr;
+}
 
-myTest += myNum;
-console.log('+=:', myTest);
-var myTest= 20;
-myTest -= 10;
-console.log('-=:', myTest);
-var myTest= 20;
-myTest *= 10;
-console.log('*=:', myTest);
-var myTest= 20;
-myTest /= 10;
-console.log('/=:', myTest);
-var myTest= 20;
-myTest %= 7;
-console.log('%=:', myTest);
+console.log(evenFn(10)); // [2, 4, 6, 8, 10]
 
+console.log(evenFn(15)); // [2, 4, 6, 8, 10, 12, 14]
+
+console.log(evenFn(20)); // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
 /*
  * #5
  *
- * Используя свойства и методы объекта Math, присвойте переменным и отобразите в консоли
- */
-
-// константа Pi → myPi
-var myPi = Math.PI; 
-console.log('myPi:', myPi);
-
-// округленное значение числа 89.279 → myRound
-var myRound = Math.round(89.279);
-console.log('myRound:', myRound);
-
-// случайное число между 0..10 → myRandom
-var myRandom = Math.random()*10;
-console.log('myRandom:', myRandom);
-
-// 3 в 5 степени → myPow
-var myPow = Math.pow(3,5);
-console.log('myPow:', myPow);
-/*
- * #6
+ * Создайте функцию weekFn(n), которая принимает номер дня недели, а возвращает его название.
+ * Если вводится строка, любое дробное число или число вне диапазона 1..7 – функция должна вернуть null.
  *
- * Создайте объект с именем strObj.
- * Присвойте ключу str строку текста "Мама мыла раму, рама мыла маму", ключу length установите длину этой строки.
- */
-
-// Мама мыла раму, рама мыла маму
-
-// strObj
-var strObj = {str: 'Мама мыла раму, рама мыла маму'}
-strObj.length = strObj.str.length;
-console.log('strObj: ', strObj);
-
-/*
- * #7
+ * Например:
+ * 1 → 'Понедельник'
+ * 2 → 'Вторник'
+ * ...
+ * 7 → 'Воскресенье'
  *
- * Проверьте наличие текста 'рама' в поле str объекта strObj (см.п.6),
- * результат сохраните в переменную isRamaPos и выведите ее в консоль.
+ * В реализации функции обязательно должны быть использованы операторы switch / case / default.
  */
 
-// isRamaPos
-var isRamaPos= strObj.str.indexOf('рама');
-console.log('isRamaPos: ', isRamaPos);
+function weekFn(weekday) {
+  let str = "";
+  switch (weekday) {
+    case 1:
+      str = "Понедельник";
+      break;
+    case 2:
+      str = "Вторник";
+      break;
+    case 3:
+      str = "Среда";
+      break;
+    case 4:
+      str = "Четверг";
+      break;
+    case 5:
+      str = "Пятница";
+      break;
+    case 6:
+      str = "Суббота";
+      break;
+    case 7:
+      str = "Воскресенье";
+      break;
+    default:
+      str = null;
+  }
+  return str;
+}
+console.log(weekFn(1)); // 'Понедельник'
+
+console.log(weekFn(3)); // 'Среда'
+
+console.log(weekFn(7)); // 'Воскресенье'
+
+console.log(weekFn(9)); // null
+
+console.log(weekFn(1.5)); // null
+
+console.log(weekFn("2")); // null
+
+// 6.
+
+function ageClassification(age) {
+  return age < 0
+    ? null
+    : age <= 24
+    ? "детский возраст"
+    : age <= 44
+    ? "молодой возраст"
+    : age <= 65
+    ? "средний возраст"
+    : age <= 75
+    ? "пожилой возраст"
+    : age <= 90
+    ? "старческий возраст"
+    : age <= 122
+    ? "долгожители"
+    : null;
+}
+
+console.log("-1 :", ageClassification(-1)); // -1 : null
+
+console.log("5 :", ageClassification(5)); // 5 : детский возраст
+
+console.log("34 :", ageClassification(34)); // 34 : молодой возраст
+
+console.log("50 :", ageClassification(50)); // 50 : средний возраст
+
+console.log("65.1 :", ageClassification(65.1)); // 65.1 : пожилой возраст
+
+console.log("80 :", ageClassification(80)); // 80 : старческий возраст
+
+console.log("110 :", ageClassification(110)); // 110 : долгожители
+
+console.log("130 :", ageClassification(130)); // 130 : null
+
+//  * #7
+//  *
+//  * Создайте функцию oddFn(n), которая принимает параметром число – количество итераций цикла.
+//  * Функция должна вернуть массив, состоящий только из нечетных значений, генерируемых в цикле.
+//  *
+//  * Причем:
+//  * 0 не должен попадать в результирующий массив
+//  * цикл должен работать до n включительно
+//  * разрешен только оператор while
+//  *
+//  * Например:
+//  * oddFn(10) → [1, 3, 5, 7, 9]
+//  * oddFn(15) → [1, 3, 5, 7, 9, 11, 13, 15]
+//  * oddFn(20) → [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+//  */
+
+function oddFn(n) {
+  let arr = [];
+  let i = 0;
+  while (i++ < n) if (i % 2 !== 0) arr.push(i);
+  return arr;
+}
+
+console.log(oddFn(10)); // [1, 3, 5, 7, 9]
+
+console.log(oddFn(15)); // [1, 3, 5, 7, 9, 11, 13, 15]
+
+console.log(oddFn(20));
+
 /*
  * #8
  *
- * Выполните переименование подстроки в строке.
- * В качестве исходной строки используйте значение поля str объекта strObj (см.п.6), результат сохраните в переменную strReplace и отобразите в консоли.
- * Исходная строка: 'Мама мыла раму, рама мыла маму'
- *       Результат: 'Мама моет раму, Рама держит маму'
+ * Создайте основную функцию mainFunc(a, b, func), которая принимает три параметра:
+ * a – число
+ * b - число
+ * func –  обрабатывающая параметры a и b, возвратная (callback) функция
+ *
+ * Реализуйте проверку: если третьим параметром передается не функция, нужно вернуть false.
+ *
+ */
+function mainFunc(a, b, cb){
+if  ( typeof cb === 'function') return cb(a,b);
+return false;
+}
+
+/*
+ * реализуйте следующие функции, которые будут осуществлять механизм callback в основной функции,
+ * возвращая ей результат собственного вычисления...
+ * для возведения в степень и получения произвольного значения можете воспользоваться методами объекта Math.
  */
 
-// strReplace
-var strReplace = strObj.str.replace('мыла', 'моет');
-strReplace = strReplace.replace('рама', 'Рама');
-strReplace = strReplace.replace('мыла', 'держит');
-console.log('strReplace:', strReplace);
+// cbRandom(a, b) – вычисляет и возвращает произвольное целое число в диапазоне между a и b включительно.
+function cbRandom(a, b){
+return Math.floor (Math.random() * (a - b + 1)) + b;
+}
+// cbPow(a, b) – вычисляет и возвращает результат возведения числа a в степень b.
+function cbPow(a, b){
+	return Math.pow(a, b);
+}
+// cbAdd(a, b) – вычисляет и возвращает сумму двух чисел a и b.
+function cbAdd(a, b){
+	return a + b;
+}
 /*
- * #9
- *
- * Преобразуйте любую строку в верхний, затем в нижний регистры, результат отобразите в консоли.
+ * mainFunc() должна возвращать результат работы переданной ей возвратной функции, например:
+ * mainFunc(2, 5, cbRandom) → случайно от 2 до 5 включительно
+ * mainFunc(10, 30, cbRandom) → случайно 10..30 включительно
+ * mainFunc(2, 5, cbPow) → 32
+ * mainFunc(2, 5, cbAdd) → 7
+ * mainFunc(2, 5, 'not a func') → false
  */
-console.log('меня зовут Юля'.toUpperCase());
-console.log('меня зовут ЮЛЯ'.toLowerCase());
+
+console.log(mainFunc(2, 5, cbRandom)); // целые числа в диапазоне 2..5
+
+console.log(mainFunc(2, 5, cbPow)); // 32
+
+console.log(mainFunc(2, 5, cbAdd)); // 7
+
+console.log(mainFunc(2, 5, 'not a func')); // false
