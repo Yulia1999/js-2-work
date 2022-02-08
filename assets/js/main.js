@@ -220,8 +220,10 @@ console.log(oddFn(20));
  *
  */
 function mainFunc(a, b, cb){
-if  ( typeof cb === 'function') return cb(a,b);
-return false;
+if  ( typeof cb === 'function') 
+{return cb(a,b)}
+else
+{return false;}
 }
 
 /*
